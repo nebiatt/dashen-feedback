@@ -1,0 +1,548 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Session Feedback · Dashen Bank</title>
+<meta name="description" content="Feedback for the AI-Accelerated Software Delivery knowledge sharing session with Dr. Anteneh Masresha at Dashen Bank.">
+<meta name="theme-color" content="#192165">
+<meta property="og:title" content="AI-Accelerated Software Delivery: Session Feedback">
+<meta property="og:description" content="Share your feedback in about 60 seconds.">
+<meta property="og:image" content="assets/poster.jpg">
+<link rel="icon" href="assets/dashen-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #192165;
+    --navy-2: #232c7a;
+    --navy-line: #3a4390;
+    --gold: #e8b23a;
+    --gold-soft: #fbf0d6;
+    --cream: #fbfaf7;
+    --panel: #eceffa;
+    --ink: #14181f;
+    --muted: #5b6070;
+    --line: #d9dbe4;
+    --error: #b42318;
+    --radius: 14px;
+    --display: "Sora", system-ui, sans-serif;
+    --body: "IBM Plex Sans", system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--cream);
+    color: var(--ink);
+    font: 16px/1.5 var(--body);
+  }
+  img { max-width: 100%; display: block; }
+
+  /* Header */
+  .hero {
+    background: var(--navy);
+    color: #fff;
+    padding: 20px 16px 28px;
+  }
+  .wrap { max-width: 1080px; margin: 0 auto; }
+  .hero-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .logo { width: 56px; height: 56px; border-radius: 10px; }
+  .pill {
+    border: 1.5px solid var(--gold);
+    color: var(--gold);
+    border-radius: 999px;
+    padding: 5px 12px;
+    font: 600 11px/1 var(--body);
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .hero h1 {
+    font: 800 clamp(30px, 7vw, 52px)/1.05 var(--display);
+    letter-spacing: -0.02em;
+    margin: 22px 0 8px;
+  }
+  .hero h1 .gold { color: var(--gold); display: block; }
+  .hero .sub { font: 600 17px/1.4 var(--display); margin: 0 0 14px; }
+  .meta { display: flex; flex-wrap: wrap; gap: 6px 18px; color: #c9cdea; font-size: 14px; }
+  .meta strong { color: #fff; font-weight: 600; }
+  .cta {
+    display: inline-flex; align-items: center; gap: 8px;
+    margin-top: 20px;
+    background: var(--gold); color: var(--navy);
+    font: 700 16px/1 var(--display);
+    padding: 14px 20px; border-radius: 12px; text-decoration: none;
+  }
+
+  /* Layout */
+  main { padding: 24px 16px 48px; }
+  .grid { display: grid; gap: 24px; }
+  @media (min-width: 900px) {
+    .grid { grid-template-columns: 380px 1fr; align-items: start; }
+    .poster-col { position: sticky; top: 20px; }
+    .cta { display: none; }
+  }
+
+  /* Poster */
+  .poster {
+    background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
+    overflow: hidden; position: relative;
+  }
+  .poster img { width: 100%; height: auto; }
+  .poster.collapsed .frame { max-height: 300px; overflow: hidden; position: relative; }
+  .poster.collapsed .frame::after {
+    content: ""; position: absolute; inset: auto 0 0 0; height: 90px;
+    background: linear-gradient(to bottom, rgba(251,250,247,0), #fff);
+  }
+  .poster button {
+    width: 100%; border: 0; border-top: 1px solid var(--line); background: #fff;
+    color: var(--navy); font: 600 14px/1 var(--body); padding: 14px; cursor: pointer;
+  }
+  @media (min-width: 900px) {
+    .poster.collapsed .frame { max-height: none; }
+    .poster.collapsed .frame::after, .poster button { display: none; }
+  }
+
+  /* Form */
+  .card {
+    background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 22px 18px; margin-bottom: 18px;
+  }
+  @media (min-width: 600px) { .card { padding: 28px; } }
+  .eyebrow {
+    font: 600 12px/1 var(--body); letter-spacing: .14em; text-transform: uppercase;
+    color: var(--muted); margin: 0 0 6px;
+  }
+  .card h2 { font: 700 21px/1.25 var(--display); color: var(--navy); margin: 0 0 18px; }
+  .field { margin-bottom: 18px; }
+  .field:last-child { margin-bottom: 0; }
+  label, .label { display: block; font-weight: 600; font-size: 15px; margin-bottom: 7px; }
+  .req { color: var(--error); margin-left: 2px; }
+  .hint { font-size: 13px; color: var(--muted); margin: -3px 0 8px; }
+  input[type=text], input[type=email], input[type=tel], select, textarea {
+    width: 100%; font: 16px/1.4 var(--body); color: var(--ink);
+    background: #fff; border: 1.5px solid var(--line); border-radius: 10px;
+    padding: 12px 13px; appearance: none;
+  }
+  select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23192165' stroke-width='2' fill='none'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px;
+  }
+  textarea { min-height: 88px; resize: vertical; }
+  input:focus, select:focus, textarea:focus { outline: none; border-color: var(--navy); box-shadow: 0 0 0 3px rgba(25,33,101,.15); }
+  .phone { display: flex; }
+  .phone span {
+    display: flex; align-items: center; padding: 0 12px; font-weight: 600; color: var(--navy);
+    background: var(--panel); border: 1.5px solid var(--line); border-right: 0; border-radius: 10px 0 0 10px;
+  }
+  .phone input { border-radius: 0 10px 10px 0; }
+  .two { display: grid; gap: 18px; }
+  @media (min-width: 600px) { .two { grid-template-columns: 1fr 1fr; } .two .field { margin-bottom: 0; } }
+  .field.invalid input, .field.invalid select, .field.invalid textarea { border-color: var(--error); }
+  .err { display: none; color: var(--error); font-size: 13px; margin-top: 6px; }
+  .field.invalid .err { display: block; }
+
+  /* Scales */
+  .scale { display: grid; gap: 6px; grid-template-columns: repeat(5, 1fr); }
+  .scale.nps { grid-template-columns: repeat(11, 1fr); gap: 4px; }
+  .scale input { position: absolute; opacity: 0; pointer-events: none; }
+  .scale label {
+    margin: 0; text-align: center; border: 1.5px solid var(--line); border-radius: 10px;
+    padding: 11px 0; font: 600 15px/1 var(--body); color: var(--navy); cursor: pointer;
+    user-select: none; background: #fff; transition: background .12s, border-color .12s;
+  }
+  .scale.nps label { padding: 11px 0; font-size: 14px; border-radius: 8px; }
+  .scale input:checked + label { background: var(--navy); border-color: var(--navy); color: #fff; }
+  .scale input:focus-visible + label { box-shadow: 0 0 0 3px rgba(232,178,58,.6); }
+  .ends { display: flex; justify-content: space-between; font-size: 12px; color: var(--muted); margin-top: 6px; }
+  .field.invalid .scale label { border-color: #e7a19b; }
+
+  /* Checkboxes */
+  .checks { display: grid; gap: 8px; }
+  .check {
+    display: flex; gap: 10px; align-items: flex-start; font-weight: 500; margin: 0;
+    border: 1.5px solid var(--line); border-radius: 10px; padding: 11px 12px; cursor: pointer;
+  }
+  .check input { width: 18px; height: 18px; margin: 2px 0 0; accent-color: var(--navy); flex: none; }
+  .check:has(input:checked) { border-color: var(--navy); background: var(--panel); }
+  .consent { background: var(--gold-soft); border-color: #f0d79b; font-size: 14px; line-height: 1.45; }
+  .consent:has(input:checked) { background: var(--gold-soft); border-color: var(--gold); }
+
+  .submit {
+    width: 100%; border: 0; border-radius: 12px; background: var(--navy); color: #fff;
+    font: 700 17px/1 var(--display); padding: 17px; cursor: pointer; margin-top: 4px;
+  }
+  .submit:hover { background: var(--navy-2); }
+  .submit:disabled { opacity: .6; cursor: progress; }
+  .form-error { display: none; color: var(--error); font-weight: 600; margin: 12px 0 0; text-align: center; }
+  .form-error.show { display: block; }
+
+  /* Thank you */
+  .thanks { display: none; text-align: center; padding: 40px 22px; }
+  .thanks.show { display: block; }
+  .tick {
+    width: 64px; height: 64px; border-radius: 50%; background: var(--gold); color: var(--navy);
+    display: grid; place-items: center; margin: 0 auto 16px;
+  }
+  .thanks h2 { font: 800 26px/1.2 var(--display); color: var(--navy); margin: 0 0 8px; }
+  .thanks p { color: var(--muted); margin: 0 auto 8px; max-width: 420px; }
+  .linkbtn { background: none; border: 0; color: var(--navy); font: 600 14px var(--body); text-decoration: underline; cursor: pointer; margin-top: 14px; }
+
+  footer { text-align: center; font-size: 13px; color: var(--muted); padding: 0 16px 32px; }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-top">
+      <img class="logo" src="assets/dashen-logo.png" alt="Dashen Bank">
+      <span class="pill">Session feedback</span>
+    </div>
+    <h1><span class="gold">AI-Accelerated</span>Software Delivery</h1>
+    <p class="sub">Thank you for joining. Tell us how it went.</p>
+    <div class="meta">
+      <span>With <strong>Dr. Anteneh Masresha</strong></span>
+      <span><strong>Tue, 13 Oct 2026</strong> · Dashen Bank Innovation Hub</span>
+    </div>
+    <a class="cta" href="#feedback">Give feedback · 60 sec ↓</a>
+  </div>
+</header>
+
+<main>
+  <div class="wrap grid">
+    <aside class="poster-col">
+      <div class="poster collapsed" id="poster">
+        <div class="frame">
+          <img src="assets/poster.jpg" width="1000" height="1414"
+               alt="Session poster: AI-Accelerated Software Delivery, Faster delivery, stronger controls. Featured speaker Dr. Anteneh Masresha. Topics: Agentic Software Development, The ADLC, AI Governance for a Regulated Bank, Automation in Practice. Tuesday 13 October 2026, 9:00 AM, Dashen Bank Innovation Hub.">
+        </div>
+        <button type="button" id="posterToggle" aria-expanded="false">Show full poster</button>
+      </div>
+    </aside>
+
+    <section id="feedback">
+      <form id="form" novalidate>
+
+        <div class="card">
+          <p class="eyebrow">Step 1 of 3</p>
+          <h2>Your details</h2>
+          <div class="field" data-required>
+            <label for="name">Full name<span class="req">*</span></label>
+            <input type="text" id="name" name="name" autocomplete="name" required>
+            <div class="err">Please enter your name.</div>
+          </div>
+          <div class="field" data-required>
+            <label for="email">Email<span class="req">*</span></label>
+            <input type="email" id="email" name="email" autocomplete="email" inputmode="email" placeholder="name@dashenbanksc.com" required>
+            <div class="err">Please enter a valid email address.</div>
+          </div>
+          <div class="field" data-required>
+            <label for="phone">Phone<span class="req">*</span></label>
+            <div class="phone">
+              <span>+251</span>
+              <input type="tel" id="phone" name="phone" autocomplete="tel-national" inputmode="numeric" placeholder="9X XXX XXXX" maxlength="13" required>
+            </div>
+            <div class="err">Enter a 9-digit mobile number starting with 9 or 7.</div>
+          </div>
+          <div class="field" data-required>
+            <label for="department">Department<span class="req">*</span></label>
+            <select id="department" name="department" required>
+              <option value="">Select…</option>
+              <option>IT / Software Engineering</option>
+              <option>Digital Banking</option>
+              <option>Infrastructure &amp; Operations</option>
+              <option>Information Security</option>
+              <option>Data &amp; Analytics</option>
+              <option>Risk &amp; Compliance</option>
+              <option>Business / Branch Operations</option>
+              <option>Other</option>
+            </select>
+            <div class="err">Please choose your department.</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <p class="eyebrow">Step 2 of 3</p>
+          <h2>Your feedback</h2>
+
+          <div class="field" data-required data-scale="overall">
+            <span class="label" id="l-overall">Overall, how would you rate the session?<span class="req">*</span></span>
+            <div class="scale" role="radiogroup" aria-labelledby="l-overall" data-name="overall" data-min="1" data-max="5"></div>
+            <div class="ends"><span>Poor</span><span>Excellent</span></div>
+            <div class="err">Please pick a rating.</div>
+          </div>
+
+          <div class="field" data-required data-scale="relevance">
+            <span class="label" id="l-relevance">How relevant was the content to your work?<span class="req">*</span></span>
+            <div class="scale" role="radiogroup" aria-labelledby="l-relevance" data-name="relevance" data-min="1" data-max="5"></div>
+            <div class="ends"><span>Not relevant</span><span>Highly relevant</span></div>
+            <div class="err">Please pick a rating.</div>
+          </div>
+
+          <div class="field" data-required data-scale="speaker">
+            <span class="label" id="l-speaker">How would you rate Dr. Anteneh's delivery?<span class="req">*</span></span>
+            <div class="scale" role="radiogroup" aria-labelledby="l-speaker" data-name="speaker" data-min="1" data-max="5"></div>
+            <div class="ends"><span>Poor</span><span>Excellent</span></div>
+            <div class="err">Please pick a rating.</div>
+          </div>
+
+          <div class="field" data-required data-scale="conf_before">
+            <span class="label" id="l-before">Your confidence using AI in software delivery <em>before</em> the session<span class="req">*</span></span>
+            <div class="scale" role="radiogroup" aria-labelledby="l-before" data-name="conf_before" data-min="1" data-max="5"></div>
+            <div class="ends"><span>Not confident</span><span>Very confident</span></div>
+            <div class="err">Please pick a rating.</div>
+          </div>
+
+          <div class="field" data-required data-scale="conf_after">
+            <span class="label" id="l-after">…and <em>after</em> the session<span class="req">*</span></span>
+            <div class="scale" role="radiogroup" aria-labelledby="l-after" data-name="conf_after" data-min="1" data-max="5"></div>
+            <div class="ends"><span>Not confident</span><span>Very confident</span></div>
+            <div class="err">Please pick a rating.</div>
+          </div>
+
+          <div class="field">
+            <span class="label">Which topic was most valuable to you?</span>
+            <div class="checks">
+              <label class="check"><input type="checkbox" name="valuable" value="Agentic Software Development"> Agentic Software Development</label>
+              <label class="check"><input type="checkbox" name="valuable" value="The ADLC"> The ADLC</label>
+              <label class="check"><input type="checkbox" name="valuable" value="AI Governance for a Regulated Bank"> AI Governance for a Regulated Bank</label>
+              <label class="check"><input type="checkbox" name="valuable" value="Automation in Practice"> Automation in Practice</label>
+              <label class="check"><input type="checkbox" name="valuable" value="Interactive Q&amp;A"> Interactive Q&amp;A</label>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="takeaway">Your most valuable takeaway</label>
+            <textarea id="takeaway" name="takeaway" maxlength="1000"></textarea>
+          </div>
+
+          <div class="field">
+            <label for="improve">What should we improve?</label>
+            <textarea id="improve" name="improve" maxlength="1000"></textarea>
+          </div>
+
+          <div class="field">
+            <label for="usecase">One AI use case you'd like to try in your role</label>
+            <p class="hint">For example, generating test cases, code review, or automating a reconciliation.</p>
+            <textarea id="usecase" name="usecase" maxlength="1000"></textarea>
+          </div>
+        </div>
+
+        <div class="card">
+          <p class="eyebrow">Step 3 of 3</p>
+          <h2>What's next</h2>
+
+          <div class="field" data-required data-scale="nps">
+            <span class="label" id="l-nps">How likely are you to recommend this session to a colleague?<span class="req">*</span></span>
+            <div class="scale nps" role="radiogroup" aria-labelledby="l-nps" data-name="nps" data-min="0" data-max="10"></div>
+            <div class="ends"><span>Not likely</span><span>Extremely likely</span></div>
+            <div class="err">Please pick a score.</div>
+          </div>
+
+          <div class="field">
+            <span class="label">I'd be interested in…</span>
+            <div class="checks">
+              <label class="check"><input type="checkbox" name="followup" value="Deep-dive workshop"> A deep-dive workshop</label>
+              <label class="check"><input type="checkbox" name="followup" value="Hands-on lab"> A hands-on lab with AI coding agents</label>
+              <label class="check"><input type="checkbox" name="followup" value="Use-case clinic"> A 1:1 use-case clinic for my team</label>
+              <label class="check"><input type="checkbox" name="followup" value="Not now"> Not right now</label>
+            </div>
+          </div>
+
+          <div class="field" data-required data-consent>
+            <label class="check consent">
+              <input type="checkbox" id="consent" name="consent" value="yes" required>
+              <span>I agree that my name, email and phone may be used by the session organisers to share session materials and follow-up opportunities. My details will not be shared with third parties.<span class="req">*</span></span>
+            </label>
+            <div class="err">Please tick the box to continue.</div>
+          </div>
+
+          <button class="submit" type="submit" id="submit">Submit feedback</button>
+          <p class="form-error" id="formError" role="alert"></p>
+        </div>
+      </form>
+
+      <div class="card thanks" id="thanks" role="status" aria-live="polite">
+        <div class="tick" aria-hidden="true">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
+        </div>
+        <h2>Thank you!</h2>
+        <p>Your feedback has been received. We'll email the session materials to you shortly.</p>
+        <p>Faster delivery. Stronger controls.</p>
+        <button class="linkbtn" type="button" id="again">Submit another response</button>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer>Dashen Bank · Knowledge Sharing Session · AI-Accelerated Software Delivery</footer>
+
+<script src="config.js"></script>
+<script>
+(function () {
+  var form = document.getElementById('form');
+  var thanks = document.getElementById('thanks');
+  var submitBtn = document.getElementById('submit');
+  var formError = document.getElementById('formError');
+
+  // Poster expand/collapse (mobile)
+  var poster = document.getElementById('poster');
+  var toggle = document.getElementById('posterToggle');
+  toggle.addEventListener('click', function () {
+    var collapsed = poster.classList.toggle('collapsed');
+    toggle.textContent = collapsed ? 'Show full poster' : 'Collapse poster';
+    toggle.setAttribute('aria-expanded', String(!collapsed));
+  });
+
+  // Build rating scales
+  document.querySelectorAll('.scale').forEach(function (el) {
+    var name = el.dataset.name, min = +el.dataset.min, max = +el.dataset.max;
+    for (var i = min; i <= max; i++) {
+      var id = name + '-' + i;
+      el.insertAdjacentHTML('beforeend',
+        '<input type="radio" name="' + name + '" id="' + id + '" value="' + i + '">' +
+        '<label for="' + id + '">' + i + '</label>');
+    }
+  });
+
+  // Phone: keep digits only, drop a leading 0 (09… → 9…)
+  var phone = document.getElementById('phone');
+  phone.addEventListener('input', function () {
+    var d = phone.value.replace(/\D/g, '');
+    if (d.indexOf('251') === 0 && d.length > 9) d = d.slice(3);
+    if (d.charAt(0) === '0') d = d.slice(1);
+    phone.value = d.slice(0, 9);
+  });
+
+  var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+  var PHONE_RE = /^[79]\d{8}$/;
+
+  function checkField(field) {
+    var ok = true;
+    if (field.dataset.scale) {
+      ok = !!form.querySelector('input[name="' + field.dataset.scale + '"]:checked');
+    } else if (field.hasAttribute('data-consent')) {
+      ok = document.getElementById('consent').checked;
+    } else {
+      var input = field.querySelector('input, select, textarea');
+      var v = input.value.trim();
+      if (input.id === 'email') ok = EMAIL_RE.test(v);
+      else if (input.id === 'phone') ok = PHONE_RE.test(v);
+      else ok = v.length > 0;
+    }
+    field.classList.toggle('invalid', !ok);
+    return ok;
+  }
+
+  // Clear an error as soon as the field is fixed
+  form.addEventListener('change', function (e) {
+    var f = e.target.closest('.field[data-required]');
+    if (f && f.classList.contains('invalid')) checkField(f);
+  });
+  form.addEventListener('input', function (e) {
+    var f = e.target.closest('.field[data-required]');
+    if (f && f.classList.contains('invalid')) checkField(f);
+  });
+
+  // "Not now" is exclusive with the other follow-up options
+  form.addEventListener('change', function (e) {
+    if (e.target.name !== 'followup' || !e.target.checked) return;
+    form.querySelectorAll('input[name="followup"]').forEach(function (cb) {
+      if (cb !== e.target && (e.target.value === 'Not now' || cb.value === 'Not now')) cb.checked = false;
+    });
+  });
+
+  function values(name) {
+    return Array.prototype.map.call(form.querySelectorAll('input[name="' + name + '"]:checked'), function (c) { return c.value; }).join('; ');
+  }
+  function radio(name) {
+    var c = form.querySelector('input[name="' + name + '"]:checked');
+    return c ? c.value : '';
+  }
+
+  function showThanks() {
+    form.style.display = 'none';
+    thanks.classList.add('show');
+    thanks.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    formError.classList.remove('show');
+
+    var fields = form.querySelectorAll('.field[data-required]');
+    var firstBad = null;
+    fields.forEach(function (f) { if (!checkField(f) && !firstBad) firstBad = f; });
+    if (firstBad) {
+      firstBad.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      var focusable = firstBad.querySelector('input:not([type=radio]), select, textarea');
+      if (focusable) setTimeout(function () { focusable.focus({ preventScroll: true }); }, 300);
+      return;
+    }
+
+    var endpoint = (window.FEEDBACK_CONFIG || {}).endpoint;
+    if (!endpoint) {
+      formError.textContent = 'Feedback collection is not connected yet. Please let the organiser know.';
+      formError.classList.add('show');
+      return;
+    }
+
+    var data = new URLSearchParams({
+      name: form.name.value.trim(),
+      email: form.email.value.trim().toLowerCase(),
+      phone: '+251' + phone.value,
+      department: form.department.value,
+      overall: radio('overall'),
+      relevance: radio('relevance'),
+      speaker: radio('speaker'),
+      conf_before: radio('conf_before'),
+      conf_after: radio('conf_after'),
+      valuable: values('valuable'),
+      takeaway: form.takeaway.value.trim(),
+      improve: form.improve.value.trim(),
+      usecase: form.usecase.value.trim(),
+      nps: radio('nps'),
+      followup: values('followup'),
+      consent: 'yes',
+      user_agent: navigator.userAgent
+    });
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Submitting…';
+
+    // Apps Script web apps don't send CORS headers, so post as a simple
+    // form request and treat a completed request as success.
+    fetch(endpoint, { method: 'POST', mode: 'no-cors', body: data })
+      .then(function () {
+        try { localStorage.setItem('dashen-feedback-submitted', '1'); } catch (_) {}
+        showThanks();
+      })
+      .catch(function () {
+        formError.textContent = 'Could not submit. Please check your connection and try again.';
+        formError.classList.add('show');
+      })
+      .finally(function () {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Submit feedback';
+      });
+  });
+
+  document.getElementById('again').addEventListener('click', function () {
+    form.reset();
+    form.querySelectorAll('.invalid').forEach(function (f) { f.classList.remove('invalid'); });
+    thanks.classList.remove('show');
+    form.style.display = '';
+    try { localStorage.removeItem('dashen-feedback-submitted'); } catch (_) {}
+    document.getElementById('feedback').scrollIntoView({ behavior: 'smooth' });
+  });
+
+  try {
+    if (localStorage.getItem('dashen-feedback-submitted') === '1') showThanks();
+  } catch (_) {}
+})();
+</script>
+</body>
+</html>
