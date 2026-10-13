@@ -154,6 +154,10 @@
     user-select: none; background: #fff; transition: background .12s, border-color .12s;
   }
   .scale.nps label { padding: 11px 0; font-size: 14px; border-radius: 8px; }
+  @media (max-width: 520px) {
+    .scale.nps { grid-template-columns: repeat(6, 1fr); gap: 6px; }
+    .scale.nps label { padding: 13px 0; font-size: 15px; }
+  }
   .scale input:checked + label { background: var(--navy); border-color: var(--navy); color: #fff; }
   .scale input:focus-visible + label { box-shadow: 0 0 0 3px rgba(232,178,58,.6); }
   .ends { display: flex; justify-content: space-between; font-size: 12px; color: var(--muted); margin-top: 6px; }
