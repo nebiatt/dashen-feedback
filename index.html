@@ -268,9 +268,9 @@
           <h2>Your feedback</h2>
 
           <div class="field" data-required data-scale="overall">
-            <span class="label" id="l-overall">Overall, how useful was this highlights session?<span class="req">*</span></span>
+            <span class="label" id="l-overall">Was this knowledge sharing important to you?<span class="req">*</span></span>
             <div class="scale" role="radiogroup" aria-labelledby="l-overall" data-name="overall" data-min="1" data-max="5"></div>
-            <div class="ends"><span>Poor</span><span>Excellent</span></div>
+            <div class="ends"><span>Not important</span><span>Very important</span></div>
             <div class="err">Please pick a rating.</div>
           </div>
 
@@ -303,7 +303,7 @@
           </div>
 
           <div class="field">
-            <span class="label">Which topics would you like a full, in-depth session on?</span>
+            <span class="label">Which topics were most valuable to you and worth exploring further?</span>
             <div class="checks">
               <label class="check"><input type="checkbox" name="valuable" value="Agentic Software Development"> Agentic Software Development</label>
               <label class="check"><input type="checkbox" name="valuable" value="The ADLC"> The ADLC</label>
@@ -327,6 +327,12 @@
             <p class="hint">For example, generating test cases, code review, or automating a reconciliation.</p>
             <textarea id="usecase" name="usecase" maxlength="1000"></textarea>
           </div>
+
+          <div class="field">
+            <label for="message">Message to Dr. Anteneh</label>
+            <p class="hint">A thank-you, a question, or an idea. We'll pass it on.</p>
+            <textarea id="message" name="message" maxlength="1000"></textarea>
+          </div>
         </div>
 
         <div class="card">
@@ -334,7 +340,7 @@
           <h2>What's next</h2>
 
           <div class="field" data-required data-scale="nps">
-            <span class="label" id="l-nps">How likely are you to recommend a full, in-depth version of this session to a colleague?<span class="req">*</span></span>
+            <span class="label" id="l-nps">How likely are you to join a further in-depth session?<span class="req">*</span></span>
             <div class="scale nps" role="radiogroup" aria-labelledby="l-nps" data-name="nps" data-min="0" data-max="10"></div>
             <div class="ends"><span>Not likely</span><span>Extremely likely</span></div>
             <div class="err">Please pick a score.</div>
@@ -489,19 +495,20 @@
     }
 
     var data = new URLSearchParams({
-      name: form.name.value.trim(),
-      email: form.email.value.trim().toLowerCase(),
+      name: document.getElementById('name').value.trim(),
+      email: document.getElementById('email').value.trim().toLowerCase(),
       phone: '+251' + phone.value,
-      department: form.department.value,
+      department: document.getElementById('department').value,
       overall: radio('overall'),
       relevance: radio('relevance'),
       speaker: radio('speaker'),
       conf_before: radio('conf_before'),
       conf_after: radio('conf_after'),
       valuable: values('valuable'),
-      takeaway: form.takeaway.value.trim(),
-      improve: form.improve.value.trim(),
-      usecase: form.usecase.value.trim(),
+      takeaway: document.getElementById('takeaway').value.trim(),
+      improve: document.getElementById('improve').value.trim(),
+      usecase: document.getElementById('usecase').value.trim(),
+      message: document.getElementById('message').value.trim(),
       nps: radio('nps'),
       followup: values('followup'),
       consent: 'yes',
